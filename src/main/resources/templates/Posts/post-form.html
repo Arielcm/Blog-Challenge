@@ -1,0 +1,66 @@
+<form id="PostForm" th:object="${PostForm}" method="post" class="form" role="form" th:action="${editMode} ?@{/posts} :@{/posts}">
+	<input class="form-control" type="hidden" th:field="${PostForm.id}">
+	<div class="form-group row">
+		<label class="col-lg-3 col-form-label form-control-label">Titulo </label>
+		<div class="col-lg-9">
+			<input class="form-control" type="text" th:field="${PostForm.titulo}" required="">
+			<!-- <div class="alert-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div> -->
+		</div>
+	</div>
+		<div class="form-group row">
+		<label class="col-lg-3 col-form-label form-control-label">Contenido </label>
+		<div class="col-lg-9">
+			<input class="form-control" type="text" th:field="${PostForm.contenido}" required="">
+			<!-- <div class="alert-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div> -->
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-lg-3 col-form-label form-control-label">Imagen</label>
+		<div class="col-lg-9">
+			<input class="form-control" type="file" th:field="${PostForm.imagen}">
+			<!--<div class="alert-danger" th:if="${#fields.hasErrors('class_schedule')}" th:errors="*{class_schedule}">Name Error</div>-->
+		</div>
+	</div>
+	<div class="form-group row">
+		<label class="col-lg-3 col-form-label form-control-label">Categoria</label>
+		<div class="col-lg-9">
+			<label><input class="form-control" type="radio" th:field="${PostForm.categoria}" name="Categoria" value="Amor"> Amor |</label>
+			<label><input class="form-control" type="radio" th:field="${PostForm.categoria}" name="Categoria" value="Deportes"> Deportes |</label>
+			<label><input class="form-control" type="radio" th:field="${PostForm.categoria}" name="Categoria" value="Diversion"> Diversion |</label>
+			<label><input class="form-control" type="radio" th:field="${PostForm.categoria}" name="Categoria" value="Politica"> Politica |</label>
+			<label><input class="form-control" type="radio" th:field="${PostForm.categoria}" name="Categoria" value="Religion"> Religion |</label>
+			<label><input class="form-control" type="radio" th:field="${PostForm.categoria}" name="Categoria" value="Otros"> Otros </label>
+		<!--	<div class="alert-danger" th:if="${#fields.hasErrors('total_students')}" th:errors="*{total_students}">Name Error</div>-->
+		</div>
+	</div>
+	
+		<div class="form-group row">
+		<label class="col-lg-3 col-form-label form-control-label">Fecha de Creacion / Modificacion</label>
+		<div class="col-lg-9">
+			<input class="form-control" type="text" th:field="${PostForm.fecha}" readonly="readonly">
+			<!--<div class="alert-danger" th:if="${#fields.hasErrors('class_schedule')}" th:errors="*{class_schedule}">Name Error</div>-->
+		</div>
+	</div>
+	
+	
+	<div class="form-group row">
+		<div class="col-lg-12 text-center">
+			<a class="btn btn-secondary" th:href="@{'/post/cancel'}">Cancelar</a>
+			<input type="submit" class="btn btn-primary" value="Save Changes" th:value="${editMode}?'Guardar Post':'Crear Post'">
+		</div>
+	</div>
+</form>
+
+
+
+<script>
+$( document ).ready(function() {
+
+    var now = new Date();
+    var day = ("0" + now.getDate()).slice(-2);
+    var month = ("0" + (now.getMonth() + 1)).slice(-2);
+
+    var today = (day)+"-"+(month)+"-"+now.getFullYear();
+    $("#fecha").val(today);
+});
+</script>

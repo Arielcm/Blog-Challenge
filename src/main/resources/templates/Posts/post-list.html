@@ -1,0 +1,35 @@
+<div class="table-responsive" style="text-align: center;">
+	<table id="PostsList"
+		class="table table-bordered table-hover table-striped">
+		<thead class="thead-light">
+			<tr>
+				<!-- <th scope="col">ID</th> -->
+				<th scope="col">Titulo</th>
+				<th scope="col">Fecha de Post</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="list: ${listapost}">
+				<!--<td th:text="${us.idUsuario}"></td> -->
+				<td th:text="${list.titulo}"></td>
+				<td th:text="${list.fecha}"></td>
+    			<td><a href="#" th:href="@{'/posts/'+${list.id}}">Editar - <i class="fas fa-edit"></i></a> | 
+				 <a href="#" th:onclick="'javascript:confirmDelete(\''+${list.id}+'\');'">Eliminar - <i	class="fas fa-user-times"></i></a>
+				 </td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<script type="text/javascript">
+function confirmDelete(id){
+	$('#deleteModal').modal('show');
+	$("#userIdHiddenInput").val(id);
+}
+
+function deletePost(){
+	var id = $("#userIdHiddenInput").val();
+    window.location = "postsdel/"+id;
+}
+</script>
