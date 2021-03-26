@@ -1,5 +1,6 @@
 <form id="PostForm" th:object="${PostForm}" method="post" class="form" role="form" th:action="${editMode} ?@{/posts} :@{/posts}">
 	<input class="form-control" type="hidden" th:field="${PostForm.id}">
+	<input class="form-control" type="hidden" th:field="${PostForm.borrado}">
 	<div class="form-group row">
 		<label class="col-lg-3 col-form-label form-control-label">Titulo </label>
 		<div class="col-lg-9">

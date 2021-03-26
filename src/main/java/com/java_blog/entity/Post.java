@@ -6,10 +6,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
+
 import com.sun.istack.NotNull;
 
 @Entity
 @Table(name = "Posts")
+@SQLDelete(sql="UPDATE posts SET borrado=true where id = ?")
+@Where(clause = "borrado=false")
 public class Post {
 
 	@Id
@@ -27,6 +32,8 @@ public class Post {
 	
 
 	private String categoria;
+	
+	private Boolean borrado;
 	
 	@NotNull
 	private String fecha;
@@ -137,6 +144,14 @@ public class Post {
 	public String toString() {
 		return "Post [id=" + id + ", titulo=" + titulo + ", contenido=" + contenido + ", imagen=" + imagen
 				+ ", categoria=" + categoria + ", fecha=" + fecha + "]";
+	}
+
+	public Boolean getBorrado() {
+		return borrado;
+	}
+
+	public void setBorrado(Boolean borrado) {
+		this.borrado = borrado;
 	}
 	
 

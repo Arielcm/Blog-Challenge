@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
+
 
 import com.java_blog.entity.Post;
+import com.java_blog.repository.PostRepository;
 import com.java_blog.service.PostService;
 
 @Controller
@@ -50,6 +50,7 @@ public class PostController {
 			
 
 		}
+		post.setBorrado(false);
 		postservice.createPost(post);
 		return "redirect:/";
 	}
