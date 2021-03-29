@@ -11,7 +11,8 @@
 		<div class="form-group row">
 		<label class="col-lg-3 col-form-label form-control-label">Contenido </label>
 		<div class="col-lg-9">
-			<input class="form-control" type="text" th:field="${PostForm.contenido}" required="">
+			<!--  <input class="form-control" type="text" th:field="${PostForm.contenido}" required="">-->
+			<textarea rows="6" cols="50" name="text" th:field="${PostForm.contenido}" required=""></textarea>
 			<!-- <div class="alert-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</div> -->
 		</div>
 	</div>
